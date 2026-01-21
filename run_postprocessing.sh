@@ -41,7 +41,7 @@ run_notebook () {
   # Check if nbconvert is available
   if ! command -v jupyter >/dev/null 2>&1 || ! jupyter nbconvert --help >/dev/null 2>&1; then
     log "ERROR: jupyter nbconvert not found. Cannot execute notebook: $nb"
-    log "Install nbconvert: conda install -c conda-forge nbconvert"
+    log "Install nbconvert: uv pip install nbconvert"
     log "Or install via pip: pip install nbconvert"
     return 1
   fi
@@ -96,7 +96,7 @@ if run_notebook s3_compute_and_plot_Gn_Ga_Gna.ipynb && \
   log "All notebooks executed successfully"
 else
   log "WARNING: Some notebooks failed to execute. Check logs/step5.log for details."
-  log "You may need to install nbconvert: conda install -c conda-forge nbconvert"
+  log "You may need to install nbconvert: uv pip install nbconvert"
 fi
 
 log "Running Step 6: Coverage Analysis"

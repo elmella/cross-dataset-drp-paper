@@ -171,7 +171,7 @@ class Config(base.Config):
             help="Runtime config for parsl as a python module. Config is in parsl_config variable."
         )
 
-        # conda_or_singularity = sog.add_mutually_exclusive_group(required=True)
+        # venv_or_singularity = sog.add_mutually_exclusive_group(required=True)
 
 
         sog.add_argument(
@@ -195,7 +195,7 @@ class Config(base.Config):
             dest="conda_env",
             type=str,
             default=None,
-            help="Conda environment to use for execution."
+            help="Virtual environment (uv) to use for execution."
         )
 
 
