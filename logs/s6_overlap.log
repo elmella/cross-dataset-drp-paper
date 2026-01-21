@@ -29,3 +29,65 @@ Results:
 2025-10-31 12:44:36,000 - INFO - [CELL] Off-diagonal Spearman ρ (same-assay): 0.930 (p=1.17e-05)
 2025-10-31 12:44:36,000 - INFO - Runtime: 0.07 minutes
 2025-10-31 12:44:36,000 - INFO - Step 6 complete. Outputs saved to outputs/s6_overlap
+2026-01-20 17:23:06,099 - INFO - ==================================================
+2026-01-20 17:23:06,099 - INFO - Step 6: Compute Drug and Cell Overlap Metrics
+2026-01-20 17:23:06,099 - INFO - ==================================================
+2026-01-20 17:23:06,099 - INFO - Model: UNO (uno)
+2026-01-20 17:23:06,099 - INFO - Metric: r2
+2026-01-20 17:23:06,099 - INFO - Input (predictions): test_preds
+2026-01-20 17:23:06,099 - INFO - Input (G matrices): outputs/s2_G_matrices
+2026-01-20 17:23:06,099 - INFO - Output: outputs/s6_overlap
+2026-01-20 17:23:06,099 - INFO - Found G matrix: outputs/s2_G_matrices/uno_r2_G_mean.csv
+2026-01-20 17:23:06,113 - INFO - [CCLE] using CTRPv2_CCLE_split_0_deepcdr.csv | unique drugs: 24
+2026-01-20 17:23:06,208 - INFO - [CTRPv2] using CCLE_CTRPv2_split_0_deepcdr.csv | unique drugs: 494
+2026-01-20 17:23:06,270 - INFO - [GDSCv1] using CCLE_GDSCv1_split_0_deepcdr.csv | unique drugs: 294
+2026-01-20 17:23:06,316 - INFO - [GDSCv2] using CCLE_GDSCv2_split_0_deepcdr.csv | unique drugs: 168
+2026-01-20 17:23:06,321 - INFO - [gCSI] using CCLE_gCSI_split_0_deepcdr.csv | unique drugs: 16
+2026-01-20 17:23:06,335 - INFO - [CCLE] using CTRPv2_CCLE_split_0_deepcdr.csv | unique cells: 411
+2026-01-20 17:23:06,426 - INFO - [CTRPv2] using CCLE_CTRPv2_split_0_deepcdr.csv | unique cells: 720
+2026-01-20 17:23:06,485 - INFO - [GDSCv1] using CCLE_GDSCv1_split_0_deepcdr.csv | unique cells: 546
+2026-01-20 17:23:06,528 - INFO - [GDSCv2] using CCLE_GDSCv2_split_0_deepcdr.csv | unique cells: 470
+2026-01-20 17:23:06,532 - INFO - [gCSI] using CCLE_gCSI_split_0_deepcdr.csv | unique cells: 312
+2026-01-20 17:23:08,444 - WARNING - The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+2026-01-20 17:23:08,733 - WARNING - The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+2026-01-20 17:23:09,075 - WARNING - The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+2026-01-20 17:23:09,381 - WARNING - The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+2026-01-20 17:23:09,661 - INFO - 
+Results:
+2026-01-20 17:23:09,661 - INFO - [DRUG] Off-diagonal Spearman ρ (all): 0.945 (p=3.32e-10)
+2026-01-20 17:23:09,661 - INFO - [DRUG] Off-diagonal Spearman ρ (same-assay): 0.958 (p=9.54e-07)
+2026-01-20 17:23:09,662 - INFO - [CELL] Off-diagonal Spearman ρ (all):  0.834 (p=4.86e-06)
+2026-01-20 17:23:09,662 - INFO - [CELL] Off-diagonal Spearman ρ (same-assay): 0.930 (p=1.17e-05)
+2026-01-20 17:23:09,662 - INFO - Runtime: 0.06 minutes
+2026-01-20 17:23:09,662 - INFO - Step 6 complete. Outputs saved to outputs/s6_overlap
+2026-01-21 09:58:52,877 - INFO - ==================================================
+2026-01-21 09:58:52,878 - INFO - Step 6: Compute Drug and Cell Overlap Metrics
+2026-01-21 09:58:52,878 - INFO - ==================================================
+2026-01-21 09:58:52,878 - INFO - Model: UNO (uno)
+2026-01-21 09:58:52,878 - INFO - Metric: r2
+2026-01-21 09:58:52,878 - INFO - Input (predictions): test_preds
+2026-01-21 09:58:52,878 - INFO - Input (G matrices): outputs/s2_G_matrices
+2026-01-21 09:58:52,878 - INFO - Output: outputs/s6_overlap
+2026-01-21 09:58:52,878 - INFO - Found G matrix: outputs/s2_G_matrices/uno_r2_G_mean.csv
+2026-01-21 09:58:52,891 - INFO - [CCLE] using CTRPv2_CCLE_split_0_deepcdr.csv | unique drugs: 24
+2026-01-21 09:58:52,983 - INFO - [CTRPv2] using CCLE_CTRPv2_split_0_deepcdr.csv | unique drugs: 494
+2026-01-21 09:58:53,044 - INFO - [GDSCv1] using CCLE_GDSCv1_split_0_deepcdr.csv | unique drugs: 294
+2026-01-21 09:58:53,086 - INFO - [GDSCv2] using CCLE_GDSCv2_split_0_deepcdr.csv | unique drugs: 168
+2026-01-21 09:58:53,089 - INFO - [gCSI] using CCLE_gCSI_split_0_deepcdr.csv | unique drugs: 16
+2026-01-21 09:58:53,103 - INFO - [CCLE] using CTRPv2_CCLE_split_0_deepcdr.csv | unique cells: 411
+2026-01-21 09:58:53,186 - INFO - [CTRPv2] using CCLE_CTRPv2_split_0_deepcdr.csv | unique cells: 720
+2026-01-21 09:58:53,243 - INFO - [GDSCv1] using CCLE_GDSCv1_split_0_deepcdr.csv | unique cells: 546
+2026-01-21 09:58:53,284 - INFO - [GDSCv2] using CCLE_GDSCv2_split_0_deepcdr.csv | unique cells: 470
+2026-01-21 09:58:53,287 - INFO - [gCSI] using CCLE_gCSI_split_0_deepcdr.csv | unique cells: 312
+2026-01-21 09:58:54,831 - WARNING - The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+2026-01-21 09:58:55,103 - WARNING - The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+2026-01-21 09:58:55,419 - WARNING - The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+2026-01-21 09:58:55,702 - WARNING - The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+2026-01-21 09:58:55,983 - INFO - 
+Results:
+2026-01-21 09:58:55,983 - INFO - [DRUG] Off-diagonal Spearman ρ (all): 0.945 (p=3.32e-10)
+2026-01-21 09:58:55,983 - INFO - [DRUG] Off-diagonal Spearman ρ (same-assay): 0.958 (p=9.54e-07)
+2026-01-21 09:58:55,983 - INFO - [CELL] Off-diagonal Spearman ρ (all):  0.834 (p=4.86e-06)
+2026-01-21 09:58:55,983 - INFO - [CELL] Off-diagonal Spearman ρ (same-assay): 0.930 (p=1.17e-05)
+2026-01-21 09:58:55,983 - INFO - Runtime: 0.05 minutes
+2026-01-21 09:58:55,983 - INFO - Step 6 complete. Outputs saved to outputs/s6_overlap

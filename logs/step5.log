@@ -4,3 +4,341 @@
 [NbConvertApp] Writing 40061 bytes to s4_wilcoxon_and_bubble_plots.executed.ipynb
 [NbConvertApp] Converting notebook s5_shap.ipynb to notebook
 [NbConvertApp] Writing 1246271 bytes to s5_shap.executed.ipynb
+[NbConvertApp] Converting notebook s3_compute_and_plot_Gn_Ga_Gna.ipynb to notebook
+[NbConvertApp] Writing 1879536 bytes to s3_compute_and_plot_Gn_Ga_Gna.executed.ipynb
+[NbConvertApp] Converting notebook s4_wilcoxon_and_bubble_plots.ipynb to notebook
+[NbConvertApp] Writing 40048 bytes to s4_wilcoxon_and_bubble_plots.executed.ipynb
+[NbConvertApp] Converting notebook s5_shap.ipynb to notebook
+Traceback (most recent call last):
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/bin/jupyter-nbconvert", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/exporters/notebook.py", line 36, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+                ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/preprocessors/execute.py", line 102, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/preprocessors/execute.py", line 123, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matthew-mella/.local/share/uv/python/cpython-3.11.12-linux-x86_64-gnu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Load test data (CTRPv2 --> CTRPv2)
+test_dataset = 'CTRPv2'
+
+# Load test data (CTRPv2)
+ctrp_ctrp_test_data = pd.read_parquet(f'/nfs/ml_lab/projects/improve/data/experiments/run/v1.1/lgbm/improve_output/preprocess/{train_dataset}-{test_dataset}/split_0/test_data.parquet')
+display(ctrp_ctrp_test_data.iloc[:3])
+
+# Extract features for CTRPv2 test data (CTRPv2 --> CTRPv2)
+df = ctrp_ctrp_test_data.copy()
+fea_list = ["ge", "mordred"]
+fea = [c for c in df.columns if (c.split('.')[0]) in fea_list]
+X_test_ctrp = df[fea]
+print(ctrp_ctrp_test_data.shape)
+print(X_test_ctrp.shape)
+
+# Load trained model (LGBM, CTRPv2, split 0)
+modelpath = f'/nfs/ml_lab/projects/improve/data/experiments/run/v1.1/lgbm/improve_output/train/{train_dataset}/split_0/model.txt'
+lgbm_ctrp = lgb.Booster(model_file=str(modelpath))
+lgbm_ctrp.params = {'objective': 'regression'}
+
+# SHAP explainers
+lgbm_explainer = shap.TreeExplainer(lgbm_ctrp)
+shap_values_lgbm_ctrp = lgbm_explainer.shap_values(X_test_ctrp)
+
+max_disp = 25
+
+# SHAP Summary Plot (global importance + distribution)
+shap.summary_plot(shap_values_lgbm_ctrp, X_test_ctrp, max_display=max_disp, show=False, plot_size=0.2)
+plt.title(f'SHAP summary plot: {model_name} Train on {train_dataset}, Test on {test_dataset}')
+plt.savefig(fig_dir / f'shap_lgbm_{train_dataset}_{test_dataset}.png', bbox_inches='tight')
+plt.show()
+
+# SHAP Bar Plot (mean importance only)
+shap.summary_plot(shap_values_lgbm_ctrp, X_test_ctrp, plot_type="bar", max_display=max_disp, show=False, plot_size=0.2)
+plt.title(f'SHAP summary plot: {model_name} Train on {train_dataset}, Test on {test_dataset}')
+plt.savefig(fig_dir / f'shap_lgbm_{train_dataset}_{test_dataset}_barplot.png', bbox_inches='tight')
+plt.show()
+
+shap_df = pd.DataFrame(shap_values_lgbm_ctrp, columns=X_test_ctrp.columns)
+mean_abs_shap = shap_df.abs().mean() # Compute mean absolute SHAP value for each feature
+top = mean_abs_shap.sort_values(ascending=False).head(max_disp).reset_index() # Convert to DataFrame and sort
+top.columns = ["feature", "mean_abs_shap"]
+top.to_csv(outdir / f'shap_lgbm_{train_dataset}_{test_dataset}_top{max_disp}.csv', index=False)
+display(top)
+
+del test_dataset, ctrp_ctrp_test_data, df, fea, lgbm_ctrp, lgbm_explainer, shap_values_lgbm_ctrp, X_test_ctrp
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mFileNotFoundError[39m                         Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[5][39m[32m, line 5[39m
+[32m      2[39m test_dataset = [33m'[39m[33mCTRPv2[39m[33m'[39m
+[32m      4[39m [38;5;66;03m# Load test data (CTRPv2)[39;00m
+[32m----> [39m[32m5[39m ctrp_ctrp_test_data = [43mpd[49m[43m.[49m[43mread_parquet[49m[43m([49m[33;43mf[39;49m[33;43m'[39;49m[33;43m/nfs/ml_lab/projects/improve/data/experiments/run/v1.1/lgbm/improve_output/preprocess/[39;49m[38;5;132;43;01m{[39;49;00m[43mtrain_dataset[49m[38;5;132;43;01m}[39;49;00m[33;43m-[39;49m[38;5;132;43;01m{[39;49;00m[43mtest_dataset[49m[38;5;132;43;01m}[39;49;00m[33;43m/split_0/test_data.parquet[39;49m[33;43m'[39;49m[43m)[49m
+[32m      6[39m display(ctrp_ctrp_test_data.iloc[:[32m3[39m])
+[32m      8[39m [38;5;66;03m# Extract features for CTRPv2 test data (CTRPv2 --> CTRPv2)[39;00m
+
+[36mFile [39m[32m~/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/pandas/io/parquet.py:509[39m, in [36mread_parquet[39m[34m(path, engine, columns, storage_options, use_nullable_dtypes, dtype_backend, **kwargs)[39m
+[32m    506[39m     use_nullable_dtypes = [38;5;28;01mFalse[39;00m
+[32m    507[39m check_dtype_backend(dtype_backend)
+[32m--> [39m[32m509[39m [38;5;28;01mreturn[39;00m [43mimpl[49m[43m.[49m[43mread[49m[43m([49m
+[32m    510[39m [43m    [49m[43mpath[49m[43m,[49m
+[32m    511[39m [43m    [49m[43mcolumns[49m[43m=[49m[43mcolumns[49m[43m,[49m
+[32m    512[39m [43m    [49m[43mstorage_options[49m[43m=[49m[43mstorage_options[49m[43m,[49m
+[32m    513[39m [43m    [49m[43muse_nullable_dtypes[49m[43m=[49m[43muse_nullable_dtypes[49m[43m,[49m
+[32m    514[39m [43m    [49m[43mdtype_backend[49m[43m=[49m[43mdtype_backend[49m[43m,[49m
+[32m    515[39m [43m    [49m[43m*[49m[43m*[49m[43mkwargs[49m[43m,[49m
+[32m    516[39m [43m[49m[43m)[49m
+
+[36mFile [39m[32m~/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/pandas/io/parquet.py:220[39m, in [36mPyArrowImpl.read[39m[34m(self, path, columns, use_nullable_dtypes, dtype_backend, storage_options, **kwargs)[39m
+[32m    217[39m [38;5;28;01mif[39;00m manager == [33m"[39m[33marray[39m[33m"[39m:
+[32m    218[39m     to_pandas_kwargs[[33m"[39m[33msplit_blocks[39m[33m"[39m] = [38;5;28;01mTrue[39;00m  [38;5;66;03m# type: ignore[assignment][39;00m
+[32m--> [39m[32m220[39m path_or_handle, handles, kwargs[[33m"[39m[33mfilesystem[39m[33m"[39m] = [43m_get_path_or_handle[49m[43m([49m
+[32m    221[39m [43m    [49m[43mpath[49m[43m,[49m
+[32m    222[39m [43m    [49m[43mkwargs[49m[43m.[49m[43mpop[49m[43m([49m[33;43m"[39;49m[33;43mfilesystem[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m[43m,[49m
+[32m    223[39m [43m    [49m[43mstorage_options[49m[43m=[49m[43mstorage_options[49m[43m,[49m
+[32m    224[39m [43m    [49m[43mmode[49m[43m=[49m[33;43m"[39;49m[33;43mrb[39;49m[33;43m"[39;49m[43m,[49m
+[32m    225[39m [43m[49m[43m)[49m
+[32m    226[39m [38;5;28;01mtry[39;00m:
+[32m    227[39m     pa_table = [38;5;28mself[39m.api.parquet.read_table(
+[32m    228[39m         path_or_handle, columns=columns, **kwargs
+[32m    229[39m     )
+
+[36mFile [39m[32m~/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/pandas/io/parquet.py:110[39m, in [36m_get_path_or_handle[39m[34m(path, fs, storage_options, mode, is_dir)[39m
+[32m    100[39m handles = [38;5;28;01mNone[39;00m
+[32m    101[39m [38;5;28;01mif[39;00m (
+[32m    102[39m     [38;5;129;01mnot[39;00m fs
+[32m    103[39m     [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m is_dir
+[32m   (...)[39m[32m    108[39m     [38;5;66;03m# fsspec resources can also point to directories[39;00m
+[32m    109[39m     [38;5;66;03m# this branch is used for example when reading from non-fsspec URLs[39;00m
+[32m--> [39m[32m110[39m     handles = [43mget_handle[49m[43m([49m
+[32m    111[39m [43m        [49m[43mpath_or_handle[49m[43m,[49m[43m [49m[43mmode[49m[43m,[49m[43m [49m[43mis_text[49m[43m=[49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m[43m [49m[43mstorage_options[49m[43m=[49m[43mstorage_options[49m
+[32m    112[39m [43m    [49m[43m)[49m
+[32m    113[39m     fs = [38;5;28;01mNone[39;00m
+[32m    114[39m     path_or_handle = handles.handle
+
+[36mFile [39m[32m~/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/pandas/io/common.py:868[39m, in [36mget_handle[39m[34m(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)[39m
+[32m    859[39m         handle = [38;5;28mopen[39m(
+[32m    860[39m             handle,
+[32m    861[39m             ioargs.mode,
+[32m   (...)[39m[32m    864[39m             newline=[33m"[39m[33m"[39m,
+[32m    865[39m         )
+[32m    866[39m     [38;5;28;01melse[39;00m:
+[32m    867[39m         [38;5;66;03m# Binary mode[39;00m
+[32m--> [39m[32m868[39m         handle = [38;5;28;43mopen[39;49m[43m([49m[43mhandle[49m[43m,[49m[43m [49m[43mioargs[49m[43m.[49m[43mmode[49m[43m)[49m
+[32m    869[39m     handles.append(handle)
+[32m    871[39m [38;5;66;03m# Convert BytesIO or file objects passed with an encoding[39;00m
+
+[31mFileNotFoundError[39m: [Errno 2] No such file or directory: '/nfs/ml_lab/projects/improve/data/experiments/run/v1.1/lgbm/improve_output/preprocess/CTRPv2-CTRPv2/split_0/test_data.parquet'
+
+[NbConvertApp] Converting notebook s3_compute_and_plot_Gn_Ga_Gna.ipynb to notebook
+[NbConvertApp] Writing 1879536 bytes to s3_compute_and_plot_Gn_Ga_Gna.executed.ipynb
+[NbConvertApp] Converting notebook s4_wilcoxon_and_bubble_plots.ipynb to notebook
+[NbConvertApp] Writing 40048 bytes to s4_wilcoxon_and_bubble_plots.executed.ipynb
+[NbConvertApp] Converting notebook s5_shap.ipynb to notebook
+Traceback (most recent call last):
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/bin/jupyter-nbconvert", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/exporters/notebook.py", line 36, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+                ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/preprocessors/execute.py", line 102, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbconvert/preprocessors/execute.py", line 123, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matthew-mella/.local/share/uv/python/cpython-3.11.12-linux-x86_64-gnu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/matthew-mella/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Load test data (CTRPv2 --> CTRPv2)
+test_dataset = 'CTRPv2'
+
+# Load test data (CTRPv2)
+ctrp_ctrp_test_data = pd.read_parquet(f'/nfs/ml_lab/projects/improve/data/experiments/run/v1.1/lgbm/improve_output/preprocess/{train_dataset}-{test_dataset}/split_0/test_data.parquet')
+display(ctrp_ctrp_test_data.iloc[:3])
+
+# Extract features for CTRPv2 test data (CTRPv2 --> CTRPv2)
+df = ctrp_ctrp_test_data.copy()
+fea_list = ["ge", "mordred"]
+fea = [c for c in df.columns if (c.split('.')[0]) in fea_list]
+X_test_ctrp = df[fea]
+print(ctrp_ctrp_test_data.shape)
+print(X_test_ctrp.shape)
+
+# Load trained model (LGBM, CTRPv2, split 0)
+modelpath = f'/nfs/ml_lab/projects/improve/data/experiments/run/v1.1/lgbm/improve_output/train/{train_dataset}/split_0/model.txt'
+lgbm_ctrp = lgb.Booster(model_file=str(modelpath))
+lgbm_ctrp.params = {'objective': 'regression'}
+
+# SHAP explainers
+lgbm_explainer = shap.TreeExplainer(lgbm_ctrp)
+shap_values_lgbm_ctrp = lgbm_explainer.shap_values(X_test_ctrp)
+
+max_disp = 25
+
+# SHAP Summary Plot (global importance + distribution)
+shap.summary_plot(shap_values_lgbm_ctrp, X_test_ctrp, max_display=max_disp, show=False, plot_size=0.2)
+plt.title(f'SHAP summary plot: {model_name} Train on {train_dataset}, Test on {test_dataset}')
+plt.savefig(fig_dir / f'shap_lgbm_{train_dataset}_{test_dataset}.png', bbox_inches='tight')
+plt.show()
+
+# SHAP Bar Plot (mean importance only)
+shap.summary_plot(shap_values_lgbm_ctrp, X_test_ctrp, plot_type="bar", max_display=max_disp, show=False, plot_size=0.2)
+plt.title(f'SHAP summary plot: {model_name} Train on {train_dataset}, Test on {test_dataset}')
+plt.savefig(fig_dir / f'shap_lgbm_{train_dataset}_{test_dataset}_barplot.png', bbox_inches='tight')
+plt.show()
+
+shap_df = pd.DataFrame(shap_values_lgbm_ctrp, columns=X_test_ctrp.columns)
+mean_abs_shap = shap_df.abs().mean() # Compute mean absolute SHAP value for each feature
+top = mean_abs_shap.sort_values(ascending=False).head(max_disp).reset_index() # Convert to DataFrame and sort
+top.columns = ["feature", "mean_abs_shap"]
+top.to_csv(outdir / f'shap_lgbm_{train_dataset}_{test_dataset}_top{max_disp}.csv', index=False)
+display(top)
+
+del test_dataset, ctrp_ctrp_test_data, df, fea, lgbm_ctrp, lgbm_explainer, shap_values_lgbm_ctrp, X_test_ctrp
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mFileNotFoundError[39m                         Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[5][39m[32m, line 5[39m
+[32m      2[39m test_dataset = [33m'[39m[33mCTRPv2[39m[33m'[39m
+[32m      4[39m [38;5;66;03m# Load test data (CTRPv2)[39;00m
+[32m----> [39m[32m5[39m ctrp_ctrp_test_data = [43mpd[49m[43m.[49m[43mread_parquet[49m[43m([49m[33;43mf[39;49m[33;43m'[39;49m[33;43m/nfs/ml_lab/projects/improve/data/experiments/run/v1.1/lgbm/improve_output/preprocess/[39;49m[38;5;132;43;01m{[39;49;00m[43mtrain_dataset[49m[38;5;132;43;01m}[39;49;00m[33;43m-[39;49m[38;5;132;43;01m{[39;49;00m[43mtest_dataset[49m[38;5;132;43;01m}[39;49;00m[33;43m/split_0/test_data.parquet[39;49m[33;43m'[39;49m[43m)[49m
+[32m      6[39m display(ctrp_ctrp_test_data.iloc[:[32m3[39m])
+[32m      8[39m [38;5;66;03m# Extract features for CTRPv2 test data (CTRPv2 --> CTRPv2)[39;00m
+
+[36mFile [39m[32m~/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/pandas/io/parquet.py:509[39m, in [36mread_parquet[39m[34m(path, engine, columns, storage_options, use_nullable_dtypes, dtype_backend, **kwargs)[39m
+[32m    506[39m     use_nullable_dtypes = [38;5;28;01mFalse[39;00m
+[32m    507[39m check_dtype_backend(dtype_backend)
+[32m--> [39m[32m509[39m [38;5;28;01mreturn[39;00m [43mimpl[49m[43m.[49m[43mread[49m[43m([49m
+[32m    510[39m [43m    [49m[43mpath[49m[43m,[49m
+[32m    511[39m [43m    [49m[43mcolumns[49m[43m=[49m[43mcolumns[49m[43m,[49m
+[32m    512[39m [43m    [49m[43mstorage_options[49m[43m=[49m[43mstorage_options[49m[43m,[49m
+[32m    513[39m [43m    [49m[43muse_nullable_dtypes[49m[43m=[49m[43muse_nullable_dtypes[49m[43m,[49m
+[32m    514[39m [43m    [49m[43mdtype_backend[49m[43m=[49m[43mdtype_backend[49m[43m,[49m
+[32m    515[39m [43m    [49m[43m*[49m[43m*[49m[43mkwargs[49m[43m,[49m
+[32m    516[39m [43m[49m[43m)[49m
+
+[36mFile [39m[32m~/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/pandas/io/parquet.py:220[39m, in [36mPyArrowImpl.read[39m[34m(self, path, columns, use_nullable_dtypes, dtype_backend, storage_options, **kwargs)[39m
+[32m    217[39m [38;5;28;01mif[39;00m manager == [33m"[39m[33marray[39m[33m"[39m:
+[32m    218[39m     to_pandas_kwargs[[33m"[39m[33msplit_blocks[39m[33m"[39m] = [38;5;28;01mTrue[39;00m  [38;5;66;03m# type: ignore[assignment][39;00m
+[32m--> [39m[32m220[39m path_or_handle, handles, kwargs[[33m"[39m[33mfilesystem[39m[33m"[39m] = [43m_get_path_or_handle[49m[43m([49m
+[32m    221[39m [43m    [49m[43mpath[49m[43m,[49m
+[32m    222[39m [43m    [49m[43mkwargs[49m[43m.[49m[43mpop[49m[43m([49m[33;43m"[39;49m[33;43mfilesystem[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m[43m,[49m
+[32m    223[39m [43m    [49m[43mstorage_options[49m[43m=[49m[43mstorage_options[49m[43m,[49m
+[32m    224[39m [43m    [49m[43mmode[49m[43m=[49m[33;43m"[39;49m[33;43mrb[39;49m[33;43m"[39;49m[43m,[49m
+[32m    225[39m [43m[49m[43m)[49m
+[32m    226[39m [38;5;28;01mtry[39;00m:
+[32m    227[39m     pa_table = [38;5;28mself[39m.api.parquet.read_table(
+[32m    228[39m         path_or_handle, columns=columns, **kwargs
+[32m    229[39m     )
+
+[36mFile [39m[32m~/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/pandas/io/parquet.py:110[39m, in [36m_get_path_or_handle[39m[34m(path, fs, storage_options, mode, is_dir)[39m
+[32m    100[39m handles = [38;5;28;01mNone[39;00m
+[32m    101[39m [38;5;28;01mif[39;00m (
+[32m    102[39m     [38;5;129;01mnot[39;00m fs
+[32m    103[39m     [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m is_dir
+[32m   (...)[39m[32m    108[39m     [38;5;66;03m# fsspec resources can also point to directories[39;00m
+[32m    109[39m     [38;5;66;03m# this branch is used for example when reading from non-fsspec URLs[39;00m
+[32m--> [39m[32m110[39m     handles = [43mget_handle[49m[43m([49m
+[32m    111[39m [43m        [49m[43mpath_or_handle[49m[43m,[49m[43m [49m[43mmode[49m[43m,[49m[43m [49m[43mis_text[49m[43m=[49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m[43m [49m[43mstorage_options[49m[43m=[49m[43mstorage_options[49m
+[32m    112[39m [43m    [49m[43m)[49m
+[32m    113[39m     fs = [38;5;28;01mNone[39;00m
+[32m    114[39m     path_or_handle = handles.handle
+
+[36mFile [39m[32m~/valinor/cross-dataset-drp-paper/.venv/lib/python3.11/site-packages/pandas/io/common.py:868[39m, in [36mget_handle[39m[34m(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)[39m
+[32m    859[39m         handle = [38;5;28mopen[39m(
+[32m    860[39m             handle,
+[32m    861[39m             ioargs.mode,
+[32m   (...)[39m[32m    864[39m             newline=[33m"[39m[33m"[39m,
+[32m    865[39m         )
+[32m    866[39m     [38;5;28;01melse[39;00m:
+[32m    867[39m         [38;5;66;03m# Binary mode[39;00m
+[32m--> [39m[32m868[39m         handle = [38;5;28;43mopen[39;49m[43m([49m[43mhandle[49m[43m,[49m[43m [49m[43mioargs[49m[43m.[49m[43mmode[49m[43m)[49m
+[32m    869[39m     handles.append(handle)
+[32m    871[39m [38;5;66;03m# Convert BytesIO or file objects passed with an encoding[39;00m
+
+[31mFileNotFoundError[39m: [Errno 2] No such file or directory: '/nfs/ml_lab/projects/improve/data/experiments/run/v1.1/lgbm/improve_output/preprocess/CTRPv2-CTRPv2/split_0/test_data.parquet'
+

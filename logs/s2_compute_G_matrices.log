@@ -9,3 +9,25 @@
 2025-10-31 12:42:58,031 - INFO - Models: ['deepcdr', 'deepttc', 'graphdrp', 'hidra', 'lgbm', 'tcnns', 'uno']
 2025-10-31 12:42:58,329 - INFO - Runtime: 0.01 minutes
 2025-10-31 12:42:58,329 - INFO - Step 2 complete. G matrices saved to outputs/s2_G_matrices
+2026-01-20 17:22:28,323 - INFO - 
+==================================================
+2026-01-20 17:22:28,323 - INFO - Step 2: Compute G Matrices from Performance Scores
+2026-01-20 17:22:28,324 - INFO - ==================================================
+2026-01-20 17:22:28,324 - INFO - Input: outputs/s1_scores
+2026-01-20 17:22:28,324 - INFO - Output: outputs/s2_G_matrices
+2026-01-20 17:22:28,324 - INFO - Found input scores in outputs/s1_scores
+2026-01-20 17:22:28,331 - INFO - Computing G matrices from averaged splits.
+2026-01-20 17:22:28,331 - INFO - Models: ['deepcdr', 'deepttc', 'graphdrp', 'hidra', 'lgbm', 'tcnns', 'uno']
+2026-01-20 17:22:28,435 - INFO - Runtime: 0.00 minutes
+2026-01-20 17:22:28,435 - INFO - Step 2 complete. G matrices saved to outputs/s2_G_matrices
+2026-01-21 09:58:19,463 - INFO - 
+==================================================
+2026-01-21 09:58:19,463 - INFO - Step 2: Compute G Matrices from Performance Scores
+2026-01-21 09:58:19,463 - INFO - ==================================================
+2026-01-21 09:58:19,463 - INFO - Input: outputs/s1_scores
+2026-01-21 09:58:19,463 - INFO - Output: outputs/s2_G_matrices
+2026-01-21 09:58:19,463 - INFO - Found input scores in outputs/s1_scores
+2026-01-21 09:58:19,471 - INFO - Computing G matrices from averaged splits.
+2026-01-21 09:58:19,471 - INFO - Models: ['deepcdr', 'deepttc', 'graphdrp', 'hidra', 'lgbm', 'tcnns', 'uno']
+2026-01-21 09:58:19,572 - INFO - Runtime: 0.00 minutes
+2026-01-21 09:58:19,572 - INFO - Step 2 complete. G matrices saved to outputs/s2_G_matrices
