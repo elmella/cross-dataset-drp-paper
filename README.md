@@ -53,9 +53,8 @@ git clone https://github.com/adpartin/cross-dataset-drp-paper.git
 cd cross-dataset-drp-paper
 
 # 2. Set up environment (uv)
-uv venv
+uv sync
 source .venv/bin/activate
-uv pip install -r requirements.txt
 
 # 3. Run complete postprocessing pipeline
 # This will automatically download predictions if needed and run all 6 steps
@@ -236,16 +235,16 @@ python s6_overlap.py
 ### Required Software
 - Python 3.8+
 - [uv](https://docs.astral.sh/uv/)
-- All dependencies are specified in `requirements.txt` (including nbconvert for notebook execution)
+- All dependencies are specified in `pyproject.toml` (including nbconvert for notebook execution)
 
 ### Installation
 ```bash
-# Create and activate a virtual environment with uv
-uv venv
+# Create and sync a virtual environment with uv
+uv sync
 source .venv/bin/activate
 
-# Install dependencies
-uv pip install -r requirements.txt
+# Add new dependencies (optional)
+uv add <package>
 ```
 
 ## Troubleshooting
@@ -264,9 +263,8 @@ uv pip install -r requirements.txt
 # Error: Package not found
 # Solution: Recreate environment
 rm -rf .venv
-uv venv
+uv sync
 source .venv/bin/activate
-uv pip install -r requirements.txt
 ```
 
 **3. Permission issues**
