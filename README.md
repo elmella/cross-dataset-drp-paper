@@ -52,9 +52,9 @@ To reproduce the reported figures and tables **without** re-running computationa
 git clone https://github.com/adpartin/cross-dataset-drp-paper.git
 cd cross-dataset-drp-paper
 
-# 2. Set up environment
-conda env create -f environment.yml
-conda activate csa-paper-2025
+# 2. Set up environment (uv)
+uv sync
+source .venv/bin/activate
 
 # 3. Run complete postprocessing pipeline
 # This will automatically download predictions if needed and run all 6 steps
@@ -234,14 +234,17 @@ python s6_overlap.py
 
 ### Required Software
 - Python 3.8+
-- Conda package manager
-- All dependencies are specified in `environment.yml` (including nbconvert for notebook execution)
+- [uv](https://docs.astral.sh/uv/)
+- All dependencies are specified in `pyproject.toml` (including nbconvert for notebook execution)
 
 ### Installation
 ```bash
-# Create conda environment from environment.yml
-conda env create -f environment.yml
-conda activate csa-paper-2025
+# Create and sync a virtual environment with uv
+uv sync
+source .venv/bin/activate
+
+# Add new dependencies (optional)
+uv add <package>
 ```
 
 ## Troubleshooting
@@ -259,9 +262,9 @@ conda activate csa-paper-2025
 ```bash
 # Error: Package not found
 # Solution: Recreate environment
-conda env remove -n csa-paper-2025
-conda env create -f environment.yml
-conda activate csa-paper-2025
+rm -rf .venv
+uv sync
+source .venv/bin/activate
 ```
 
 **3. Permission issues**
